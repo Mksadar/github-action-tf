@@ -4,6 +4,14 @@ on:
   # push:
   #   branches: [ main ]
   workflow_dispatch:   # ✅ Manual trigger only
+    inputs:
+      action:
+        description: "Select Terraform Action"
+        required: true
+        type: choice
+        options:
+          - apply
+          - destroy
 
 
 jobs:
