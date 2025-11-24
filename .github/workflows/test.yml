@@ -43,7 +43,11 @@ jobs:
         run: |
           if [ "${{ github.event.inputs.action }}" == "apply" ]; then
             terraform apply -auto-approve
-          else
+           elif [ "${{ github.event.inputs.action }}" = "destroy" ]; then
+            echo "Running terraform destroy..."
             terraform destroy -auto-approve
+          else
+            echo "Invalid action received"
+            exit 1
           fi
         # terraform apply -auto-approve tfplan
